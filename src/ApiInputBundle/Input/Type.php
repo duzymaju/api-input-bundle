@@ -62,8 +62,6 @@ abstract class Type
 
     /**
      * Build form
-     *
-     * @return self
      */
     abstract protected function buildForm();
 
@@ -81,7 +79,7 @@ abstract class Type
         $fieldName = !empty($options['field_name']) && is_string($options['field_name']) ?
             $options['field_name'] : $name;
 
-        $child = $this->fields[$name] = new TypeField($name, $fieldName, $type);
+        $child = $this->fields[$name] = new TypeField($fieldName, $type);
 
         if ($type == TypeField::TYPE_COLLECTION) {
             $child->setChildType(array_key_exists('child_type', $options) ? $options['child_type'] : null);

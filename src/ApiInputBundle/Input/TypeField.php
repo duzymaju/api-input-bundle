@@ -42,7 +42,7 @@ class TypeField
     protected $childType;
 
     /** @var bool */
-    protected $isRequired = false;
+    protected $isRequired = true;
 
     /** @var bool */
     protected $allowAdd = false;
@@ -112,7 +112,9 @@ class TypeField
             // @TODO: add an error (field is required)
         }
 
-        if ($this->type == self::TYPE_COLLECTION) {
+        if ($this->type instanceof Type) {
+            // @TODO: add single child type support
+        } elseif ($this->type == self::TYPE_COLLECTION) {
             if (!is_array($data)) {
                 // @TODO: add an error (bad structure - array required for collection type)
                 $data = [];
@@ -121,13 +123,14 @@ class TypeField
                 $currentData = $object->$getMethodName();
 
                 $currentItems = [];
-                $getIdMethodName = 'get' . ucfirst($this->type->getIdFieldName());
+                $getIdMethodName = 'get' . ucfirst($this->childType->getIdFieldName());
                 foreach ($currentData as $currentItem) {
                     $this->checkMethodName($currentItem, $getIdMethodName);
                     $currentItems[$currentItem->$getIdMethodName()] = $currentItem;
                 }
 
-                $idName = $this->type->getIdName();
+                // @TODO: add $this->allowAdd and $this->allowDelete support
+                $idName = $this->childType->getIdName();
                 $childObjects = new ArrayCollection();
                 foreach ($data as $item) {
                     if (array_key_exists($idName, $item)) {

@@ -91,11 +91,11 @@ class Input
     }
 
     /**
-     * Get objects to add
+     * Get children objects to add
      *
      * @return object[]
      */
-    public function getToAdd()
+    public function getChildrenToAdd()
     {
         $toAdd = $this->type->getToAdd();
 
@@ -103,11 +103,11 @@ class Input
     }
 
     /**
-     * Get objects to edit
+     * Get children objects to edit
      *
      * @return object[]
      */
-    public function getToEdit()
+    public function getChildrenToEdit()
     {
         $toEdit = $this->type->getToEdit();
 
@@ -115,11 +115,11 @@ class Input
     }
 
     /**
-     * Get objects to delete
+     * Get children objects to delete
      *
      * @return object[]
      */
-    public function getToDelete()
+    public function getChildrenToDelete()
     {
         $toDelete = $this->type->getToDelete();
 
