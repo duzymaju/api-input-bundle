@@ -1,0 +1,19 @@
+{
+    "name": "duzymaju/api-input-bundle",
+    "description": "API Input Bundle",
+    "keywords": ["api", "input", "form"],
+
+    "autoload": {
+        "psr-4": {
+            "ApiInputBundle\\": "src/ApiInputBundle"
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0.x-dev"
+        }
+    },
+    "require": {
+        "symfony/symfony": ">=2.7"
+    }
+}
